@@ -25,19 +25,22 @@ subjecttest <- read.table("subject_test.txt")
 completeset <- rbind(test,train)
 colnames(completeset) <- c("labels", as.character(features$V2))
 
+#Save only mean, std or label columns
 columns_to_save <- grepl("mean",colnames(completeset)) | grepl("std",colnames(completeset)) | grepl("labels",colnames(completeset))
 completeset <- completeset[,columns_to_save]
 
 subject <- rbind(subjecttest,subjecttrain)
 
-#Calculate mean for each activity and subject
+#Split set in groups by activity and subject (split)
 aux <- split(completeset, f=list(completeset$labels, subject$V1), drop = TRUE)
 
+#Calculate mean for each activity and subject
 results <- lapply(aux, function(x) {apply(x, 2, mean)} )
 results <- lapply(results, function(x) {x <- x[-1] }) #Remove the average of the label
 results <- unlist(results)
-results<-data.frame(results)
 
+#Create a data frame with the results and organize it with correct labels
+results<-data.frame(results)
 new_row_names <- read.table(text = as.character(row.names(results)), sep = ".")
 row.names(results) <- 1:nrow(results)
 colnames(results) <- "mean"
@@ -57,4 +60,5 @@ results$activity <- gsub("6", "Laying", results$activity)
 
 setwd('../..')
 
+#Print results in a txt file
 write.table(results,"Mean_Measure_pSubject_pActivity.txt", row.name = FALSE)
