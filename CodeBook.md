@@ -1,13 +1,13 @@
-#Tidy data set description
+# Tidy data set description
 
-##The variables in the tidy data
+## The variables in the tidy data
 Tidy data contains 180 rows and 68 columns. Each row has averaged variables for each subject and each activity.
 
-##Only all the variables estimated from mean and standard deviation in the tidy set were kept.
+## Only all the variables estimated from mean and standard deviation in the tidy set were kept.
 * mean(): Mean value
 * std(): Standard deviation
 
-##The data were averaged based on subject and activity group.
+## The data were averaged based on subject and activity group.
 Subject column is numbered sequentially from 1 to 30. Activity column has 6 types as listed below.
 
 1. WALKING
@@ -17,7 +17,7 @@ Subject column is numbered sequentially from 1 to 30. Activity column has 6 type
 5. STANDING
 6. LAYING
 
-##The tidy data contains 180 rows (averaged based on activity and subject) and 81 columns (79 variables and activity labels).
+## The tidy data contains 180 rows (averaged based on activity and subject) and 81 columns (79 variables and activity labels).
 
  [3] "fBodyAcc-mean()-X"              
  [4] "fBodyAcc-mean()-Y"              
@@ -99,5 +99,5 @@ Subject column is numbered sequentially from 1 to 30. Activity column has 6 type
 [80] "tGravityAccMag-mean()"          
 [81] "tGravityAccMag-std()"
 
-##variable units
+## variable units
 Activity variable is a character. Subject variable is integer type. All the other variables are numeric type.
