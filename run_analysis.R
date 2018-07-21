@@ -37,7 +37,6 @@ subject <- rbind(subjecttest,subjecttrain)
 columns_to_save <- grepl("mean",colnames(completeset)) | grepl("std",colnames(completeset)) | grepl("labels",colnames(completeset))
 completeset <- completeset[,columns_to_save]
 
-
 #6. Split set in groups by activity and subject (split)
 aux <- split(completeset, f=list(completeset$labels, subject$V1), drop = TRUE)
 
@@ -66,9 +65,10 @@ results$activity <- gsub("4", "Sitting", results$activity)
 results$activity <- gsub("5", "Standing", results$activity)
 results$activity <- gsub("6", "Laying", results$activity)
 
-#11. Create tidy data set with one variable per column and one observation per row
+#11. Create tidy data set (with one variable per column and one observation per row)
 results<- spread(results,measure,mean)
 
 setwd('../..')
 
+#12. Print tidy data
 write.table(results, file = "./tidy_data.txt", row.names = FALSE)
